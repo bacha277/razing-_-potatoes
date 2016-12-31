@@ -24,7 +24,6 @@ public class Player extends Creature{
     public static final int DEFAULT_HEALTH_BAR_HEIGHT=5;
     public static final BufferedImage DEFAULT_PLAYER_IMAGE=Assets.sf;
     private Game game;
-    private boolean up,down,left,right;
     private boolean directionUp,directionDown,directionLeft,directionRight;
     private float speed;
     private float xMove,yMove;
@@ -63,38 +62,6 @@ public class Player extends Creature{
     
     public Game getGame() {
         return game;
-    }
-    
-    public boolean isUp() {
-        return up;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
     }
     
     public float getSpeed() {
@@ -180,23 +147,6 @@ public class Player extends Creature{
         xMove=speed;
     }
     
-    private void getInput()
-    {
-        xMove=0;
-        yMove=0;
-        if (up) {
-            moveUp();
-        }
-        if (down) {
-            moveDown();
-        }
-        if (left) {
-            moveLeft();
-        }
-        if (right) {
-            moveRight();
-        }
-    }
     private void drawHealthBar(Graphics g)
     {
         g.setColor(color);
@@ -210,7 +160,6 @@ public class Player extends Creature{
 
     @Override
     public void tick() {
-        getInput();
         move();
     }
     

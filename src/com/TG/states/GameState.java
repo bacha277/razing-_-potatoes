@@ -36,37 +36,33 @@ public class GameState extends State{
     }
     private void getInput(Game game)
     {
-        player1.setUp(false);
-        player1.setDown(false);
-        player1.setLeft(false);
-        player1.setRight(false);
-        player2.setUp(false);
-        player2.setDown(false);
-        player2.setLeft(false);
-        player2.setRight(false);
+        player1.setxMove(0);
+        player1.setyMove(0);
+        player2.setxMove(0);
+        player2.setyMove(0);
         if (game.getKeyManager().up) {
-            player1.setUp(true);
+            player1.moveUp();
         }
         if (game.getKeyManager().down) {
-            player1.setDown(true);
+            player1.moveDown();
         }
         if (game.getKeyManager().left) {
-            player1.setLeft(true);
+            player1.moveLeft();
         }
         if (game.getKeyManager().right) {
-            player1.setRight(true);
+            player1.moveRight();
         }
         if (game.getKeyManager().up2) {
-            player2.setUp(true);
+            player2.moveUp();
         }
         if (game.getKeyManager().down2) {
-            player2.setDown(true);
+            player2.moveDown();
         }
         if (game.getKeyManager().left2) {
-            player2.setLeft(true);
+            player2.moveLeft();
         }
         if (game.getKeyManager().right2) {
-            player2.setRight(true);
+            player2.moveRight();
         }
     }
     
