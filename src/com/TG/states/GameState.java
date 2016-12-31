@@ -20,13 +20,17 @@ import java.awt.Graphics;
 public class GameState extends State{
     public static final Color PLAYER_1_COLOR=Color.blue;
     public static final Color PLAYER_2_COLOR=Color.red;
+    public static final float PLAYER_1_START_X=220;
+    public static final float PLAYER_2_START_X=220;
+    public static final float PLAYER_1_START_Y=10;
+    public static final float PLAYER_2_START_Y=590;
     private Player player1,player2;
     private World world;
     private Game game;
     public GameState(Game game) {
         super(game);
-        player1=new Player(game, 100, 100,PLAYER_1_COLOR);
-        player2=new Player(game, 200, 200,PLAYER_2_COLOR);
+        player1=new Player(game, PLAYER_1_START_X, PLAYER_1_START_Y,PLAYER_1_COLOR);
+        player2=new Player(game, PLAYER_2_START_X, PLAYER_2_START_Y,PLAYER_2_COLOR);
         this.game=game;
         world=new World("res/worlds/world1.txt");
     }

@@ -9,6 +9,7 @@ import com.TG.gfx.Assets;
 import com.TG.launch.Game;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -21,8 +22,10 @@ public class Player extends Creature{
     public static final int DEFAULT_HEALTH_BAR_RELATIVE_Y=-10;
     public static final int DEFAULT_HEALTH_BAR_MAX_WIDTH=40;
     public static final int DEFAULT_HEALTH_BAR_HEIGHT=5;
+    public static final BufferedImage DEFAULT_PLAYER_IMAGE=Assets.sf;
     private Game game;
     private boolean up,down,left,right;
+    private boolean directionUp,directionDown,directionLeft,directionRight;
     private float speed;
     private float xMove,yMove;
 
@@ -91,7 +94,34 @@ public class Player extends Creature{
         this.game = game;
         speed=DEFAULT_SPEED;
     }
-    
+    public void turnUp()
+    {
+        directionUp=true;
+        directionDown=false;
+        directionLeft=false;
+        directionRight=false;
+    }
+    public void turnDown()
+    {
+        directionUp=false;
+        directionDown=true;
+        directionLeft=false;
+        directionRight=false;
+    }
+    public void turnLeft()
+    {
+        directionUp=false;
+        directionDown=false;
+        directionLeft=true;
+        directionRight=false;
+    }
+    public void turnRight()
+    {
+        directionUp=false;
+        directionDown=false;
+        directionLeft=false;
+        directionRight=true;
+    }
     public void move()
     {
         x+=xMove;
@@ -99,20 +129,25 @@ public class Player extends Creature{
     }
     public void moveUp()
     {
+        turnUp();
         yMove=-speed;
     }
     public void moveDown()
     {
+        turnDown();
         yMove=speed;
     }
     public void moveLeft()
     {
+        turnLeft();
         xMove=-speed;
     }
     public void moveRight()
     {
+        turnRight();
         xMove=speed;
     }
+    
     private void getInput()
     {
         xMove=0;
@@ -130,11 +165,15 @@ public class Player extends Creature{
             moveRight();
         }
     }
-    @Override
-    public void render(Graphics g) {
-        g.drawImage(Assets.sf, (int)x, (int)y,width,height, null);
+    private void drawHealthBar(Graphics g)
+    {
         g.setColor(color);
         g.fillRect((int)x, (int)y+DEFAULT_HEALTH_BAR_RELATIVE_Y, (int)((float)currentHealth/health*DEFAULT_HEALTH_BAR_MAX_WIDTH), DEFAULT_HEALTH_BAR_HEIGHT);
+    }
+    @Override
+    public void render(Graphics g) {
+        g.drawImage(DEFAULT_PLAYER_IMAGE, (int)x, (int)y,width,height, null);
+        drawHealthBar(g);
     }
 
     @Override
