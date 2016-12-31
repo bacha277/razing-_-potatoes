@@ -34,12 +34,16 @@ public class GameState extends State{
         this.game=game;
         world=new World("res/worlds/world1.txt");
     }
-    private void getInput1(Game game)
+    private void getInput(Game game)
     {
         player1.setUp(false);
         player1.setDown(false);
         player1.setLeft(false);
         player1.setRight(false);
+        player2.setUp(false);
+        player2.setDown(false);
+        player2.setLeft(false);
+        player2.setRight(false);
         if (game.getKeyManager().up) {
             player1.setUp(true);
         }
@@ -52,13 +56,6 @@ public class GameState extends State{
         if (game.getKeyManager().right) {
             player1.setRight(true);
         }
-    }
-    private void getInput2(Game game)
-    {
-        player2.setUp(false);
-        player2.setDown(false);
-        player2.setLeft(false);
-        player2.setRight(false);
         if (game.getKeyManager().up2) {
             player2.setUp(true);
         }
@@ -76,9 +73,8 @@ public class GameState extends State{
     @Override
     public void tick() {
         world.tick();
-        getInput1(game);
+        getInput(game);
         player1.tick();
-        getInput2(game);
         player2.tick();
     }
 

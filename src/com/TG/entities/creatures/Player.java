@@ -29,6 +29,38 @@ public class Player extends Creature{
     private float speed;
     private float xMove,yMove;
 
+    public boolean isDirectionUp() {
+        return directionUp;
+    }
+
+    public void setDirectionUp(boolean directionUp) {
+        this.directionUp = directionUp;
+    }
+
+    public boolean isDirectionDown() {
+        return directionDown;
+    }
+
+    public void setDirectionDown(boolean directionDown) {
+        this.directionDown = directionDown;
+    }
+
+    public boolean isDirectionLeft() {
+        return directionLeft;
+    }
+
+    public void setDirectionLeft(boolean directionLeft) {
+        this.directionLeft = directionLeft;
+    }
+
+    public boolean isDirectionRight() {
+        return directionRight;
+    }
+
+    public void setDirectionRight(boolean directionRight) {
+        this.directionRight = directionRight;
+    }
+    
     public Game getGame() {
         return game;
     }
