@@ -22,9 +22,46 @@ public class Player extends Creature{
     public static final int DEFAULT_HEALTH_BAR_MAX_WIDTH=40;
     public static final int DEFAULT_HEALTH_BAR_HEIGHT=5;
     private Game game;
-    
+    private boolean up,down,left,right;
     private float speed;
     private float xMove,yMove;
+
+    public Game getGame() {
+        return game;
+    }
+    
+    public boolean isUp() {
+        return up;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+    
     public float getSpeed() {
         return speed;
     }
@@ -60,21 +97,37 @@ public class Player extends Creature{
         x+=xMove;
         y+=yMove;
     }
+    public void moveUp()
+    {
+        yMove=-speed;
+    }
+    public void moveDown()
+    {
+        yMove=speed;
+    }
+    public void moveLeft()
+    {
+        xMove=-speed;
+    }
+    public void moveRight()
+    {
+        xMove=speed;
+    }
     private void getInput()
     {
         xMove=0;
         yMove=0;
-        if (game.getKeyManager().up) {
-            yMove=-speed;
+        if (up) {
+            moveUp();
         }
-        if (game.getKeyManager().down) {
-            yMove=speed;
+        if (down) {
+            moveDown();
         }
-        if (game.getKeyManager().left) {
-            xMove=-speed;
+        if (left) {
+            moveLeft();
         }
-        if (game.getKeyManager().right) {
-            xMove=speed;
+        if (right) {
+            moveRight();
         }
     }
     @Override
