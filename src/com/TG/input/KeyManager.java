@@ -27,6 +27,12 @@ public class KeyManager implements KeyListener{
         down2=keys[KeyEvent.VK_NUMPAD5];
         left2=keys[KeyEvent.VK_NUMPAD4];
         right2=keys[KeyEvent.VK_NUMPAD6];
+        near=keys[KeyEvent.VK_Q];
+        medium=keys[KeyEvent.VK_W];
+        far=keys[KeyEvent.VK_E];
+        near2=keys[KeyEvent.VK_Z];
+        medium2=keys[KeyEvent.VK_X];
+        far2=keys[KeyEvent.VK_C];
     }
     
     public KeyManager() {

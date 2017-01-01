@@ -5,6 +5,7 @@
  */
 package com.TG.entities.creatures;
 
+import com.TG.entities.abilities.Raze;
 import com.TG.gfx.Assets;
 import com.TG.launch.Game;
 import java.awt.Color;
@@ -27,7 +28,32 @@ public class Player extends Creature{
     private boolean directionUp,directionDown,directionLeft,directionRight;
     private float speed;
     private float xMove,yMove;
+    private Raze near,medium,far;
 
+    public Raze getNear() {
+        return near;
+    }
+
+    public void setNear(Raze near) {
+        this.near = near;
+    }
+
+    public Raze getMedium() {
+        return medium;
+    }
+
+    public void setMedium(Raze medium) {
+        this.medium = medium;
+    }
+
+    public Raze getFar() {
+        return far;
+    }
+
+    public void setFar(Raze far) {
+        this.far = far;
+    }
+    
     public boolean isDirectionUp() {
         return directionUp;
     }
@@ -91,6 +117,9 @@ public class Player extends Creature{
     public Player(Game game, float x, float y,Color color) {
         super(x, y,DEFAULT_PLAYER_WIDTH,DEFAULT_PLAYER_HEIGHT,color);
         this.game = game;
+        near=new Raze(x, y, Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT);
+        medium=new Raze(x, y, Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT);
+        far=new Raze(x, y, Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT);
         speed=DEFAULT_SPEED;
     }
     public void turnUp()
@@ -146,7 +175,44 @@ public class Player extends Creature{
         turnRight();
         xMove=speed;
     }
-    
+    public void updateRazePosition()
+    {
+        if (directionUp) {
+            near.setX(x);
+            near.setY(y-Raze.DEFAULT_NEAR_RANGE);
+            medium.setX(x);
+            medium.setY(y-Raze.DEFAULT_MEDIUM_RANGE);
+            far.setX(x);
+            far.setY(y-Raze.DEFAULT_FAR_RANGE);
+        }
+        else if(directionDown)
+        {
+            near.setX(x);
+            near.setY(y+Raze.DEFAULT_NEAR_RANGE);
+            medium.setX(x);
+            medium.setY(y+Raze.DEFAULT_MEDIUM_RANGE);
+            far.setX(x);
+            far.setY(y+Raze.DEFAULT_FAR_RANGE);
+        }
+        else if(directionLeft)
+        {
+            near.setX(x-Raze.DEFAULT_NEAR_RANGE);
+            near.setY(y);
+            medium.setX(x-Raze.DEFAULT_MEDIUM_RANGE);
+            medium.setY(y);
+            far.setX(x-Raze.DEFAULT_FAR_RANGE);
+            far.setY(y);
+        }
+        else if(directionRight)
+        {
+            near.setX(x+Raze.DEFAULT_NEAR_RANGE);
+            near.setY(y);
+            medium.setX(x+Raze.DEFAULT_MEDIUM_RANGE);
+            medium.setY(y);
+            far.setX(x+Raze.DEFAULT_FAR_RANGE);
+            far.setY(y);
+        }
+    }
     private void drawHealthBar(Graphics g)
     {
         g.setColor(color);
@@ -156,11 +222,15 @@ public class Player extends Creature{
     public void render(Graphics g) {
         g.drawImage(DEFAULT_PLAYER_IMAGE, (int)x, (int)y,width,height, null);
         drawHealthBar(g);
+        near.render(g);
+        medium.render(g);
+        far.render(g);
     }
 
     @Override
     public void tick() {
         move();
+        updateRazePosition();
     }
     
 }

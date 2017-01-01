@@ -30,7 +30,9 @@ public class GameState extends State{
     public GameState(Game game) {
         super(game);
         player1=new Player(game, PLAYER_1_START_X, PLAYER_1_START_Y,PLAYER_1_COLOR);
+        player1.setDirectionDown(true);
         player2=new Player(game, PLAYER_2_START_X, PLAYER_2_START_Y,PLAYER_2_COLOR);
+        player2.setDirectionUp(true);
         this.game=game;
         world=new World("res/worlds/world1.txt");
     }
@@ -40,6 +42,12 @@ public class GameState extends State{
         player1.setyMove(0);
         player2.setxMove(0);
         player2.setyMove(0);
+        player1.getNear().setRaze(false);
+        player1.getMedium().setRaze(false);
+        player1.getFar().setRaze(false);
+        player2.getNear().setRaze(false);
+        player2.getMedium().setRaze(false);
+        player2.getFar().setRaze(false);
         if (game.getKeyManager().up) {
             player1.moveUp();
         }
@@ -64,6 +72,24 @@ public class GameState extends State{
         if (game.getKeyManager().right2) {
             player2.moveRight();
         }
+        if (game.getKeyManager().near) {
+            player1.getNear().setRaze(true);
+        }
+        if (game.getKeyManager().medium) {
+            player1.getMedium().setRaze(true);
+        }
+        if (game.getKeyManager().far) {
+            player1.getFar().setRaze(true);
+        }
+        if (game.getKeyManager().near2) {
+            player2.getNear().setRaze(true);
+        }
+        if (game.getKeyManager().medium2) {
+            player2.getMedium().setRaze(true);
+        }
+        if (game.getKeyManager().far2) {
+            player2.getFar().setRaze(true);
+        }
     }
     
     @Override
@@ -78,7 +104,6 @@ public class GameState extends State{
     public void render(Graphics g) {
         world.render(g);
         player1.render(g);
-        player2.render(g);
-        
+        player2.render(g);      
     }
 }
