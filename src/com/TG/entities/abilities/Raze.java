@@ -17,8 +17,8 @@ import java.awt.image.BufferedImage;
  */
 public class Raze extends Entity{
     public static final BufferedImage DEFAULT_RAZE_IMAGE=Assets.fire;
-    public static final int DEFAULT_RAZE_WIDTH=30;
-    public static final int DEFAULT_RAZE_HEIGHT=30;
+    public static final int DEFAULT_RAZE_WIDTH=60;
+    public static final int DEFAULT_RAZE_HEIGHT=60;
     public static final int DEFAULT_NEAR_RANGE=50;
     public static final int DEFAULT_MEDIUM_RANGE=100;
     public static final int DEFAULT_FAR_RANGE=200;

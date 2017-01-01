@@ -272,6 +272,12 @@ public class Player extends Creature{
         if (near!=null) {
             near.render(g);
         }
+        if (medium!=null) {
+            medium.render(g);
+        }
+        if (far!=null) {
+            far.render(g);
+        }
     }
 
     @Override
