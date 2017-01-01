@@ -29,6 +29,56 @@ public class Player extends Creature{
     private float speed;
     private float xMove,yMove;
     private Raze near,medium,far;
+    private float nearX,nearY,mediumX,mediumY,farX,farY;
+
+    public float getNearX() {
+        return nearX;
+    }
+
+    public void setNearX(float nearX) {
+        this.nearX = nearX;
+    }
+
+    public float getNearY() {
+        return nearY;
+    }
+
+    public void setNearY(float nearY) {
+        this.nearY = nearY;
+    }
+
+    public float getMediumX() {
+        return mediumX;
+    }
+
+    public void setMediumX(float mediumX) {
+        this.mediumX = mediumX;
+    }
+
+    public float getMediumY() {
+        return mediumY;
+    }
+
+    public void setMediumY(float mediumY) {
+        this.mediumY = mediumY;
+    }
+
+    public float getFarX() {
+        return farX;
+    }
+
+    public void setFarX(float farX) {
+        this.farX = farX;
+    }
+
+    public float getFarY() {
+        return farY;
+    }
+
+    public void setFarY(float farY) {
+        this.farY = farY;
+    }
+    
 
     public Raze getNear() {
         return near;
@@ -175,42 +225,39 @@ public class Player extends Creature{
         turnRight();
         xMove=speed;
     }
-    public void updateRazePosition()
+    private void updateRazePosition()
     {
         if (directionUp) {
-            near.setX(x);
-            near.setY(y-Raze.DEFAULT_NEAR_RANGE);
-            medium.setX(x);
-            medium.setY(y-Raze.DEFAULT_MEDIUM_RANGE);
-            far.setX(x);
-            far.setY(y-Raze.DEFAULT_FAR_RANGE);
+            nearX=x;
+            nearY=y-Raze.DEFAULT_NEAR_RANGE;
+            mediumX=x;
+            mediumY=y-Raze.DEFAULT_MEDIUM_RANGE;
+            farX=x;
+            farY=y-Raze.DEFAULT_FAR_RANGE;
         }
-        else if(directionDown)
-        {
-            near.setX(x);
-            near.setY(y+Raze.DEFAULT_NEAR_RANGE);
-            medium.setX(x);
-            medium.setY(y+Raze.DEFAULT_MEDIUM_RANGE);
-            far.setX(x);
-            far.setY(y+Raze.DEFAULT_FAR_RANGE);
+        else if (directionDown) {
+            nearX=x;
+            nearY=y+Raze.DEFAULT_NEAR_RANGE;
+            mediumX=x;
+            mediumY=y+Raze.DEFAULT_MEDIUM_RANGE;
+            farX=x;
+            farY=y+Raze.DEFAULT_FAR_RANGE;
         }
-        else if(directionLeft)
-        {
-            near.setX(x-Raze.DEFAULT_NEAR_RANGE);
-            near.setY(y);
-            medium.setX(x-Raze.DEFAULT_MEDIUM_RANGE);
-            medium.setY(y);
-            far.setX(x-Raze.DEFAULT_FAR_RANGE);
-            far.setY(y);
+        else if (directionLeft) {
+            nearX=x-Raze.DEFAULT_NEAR_RANGE;
+            nearY=y;
+            mediumX=x-Raze.DEFAULT_MEDIUM_RANGE;
+            mediumY=y;
+            farX=x-Raze.DEFAULT_FAR_RANGE;
+            farY=y;
         }
-        else if(directionRight)
-        {
-            near.setX(x+Raze.DEFAULT_NEAR_RANGE);
-            near.setY(y);
-            medium.setX(x+Raze.DEFAULT_MEDIUM_RANGE);
-            medium.setY(y);
-            far.setX(x+Raze.DEFAULT_FAR_RANGE);
-            far.setY(y);
+        else if (directionRight) {
+            nearX=x+Raze.DEFAULT_NEAR_RANGE;
+            nearY=y;
+            mediumX=x+Raze.DEFAULT_MEDIUM_RANGE;
+            mediumY=y;
+            farX=x+Raze.DEFAULT_FAR_RANGE;
+            farY=y;
         }
     }
     private void drawHealthBar(Graphics g)
@@ -222,9 +269,9 @@ public class Player extends Creature{
     public void render(Graphics g) {
         g.drawImage(DEFAULT_PLAYER_IMAGE, (int)x, (int)y,width,height, null);
         drawHealthBar(g);
-        near.render(g);
-        medium.render(g);
-        far.render(g);
+        if (near!=null) {
+            near.render(g);
+        }
     }
 
     @Override

@@ -5,6 +5,7 @@
  */
 package com.TG.states;
 
+import com.TG.entities.abilities.Raze;
 import com.TG.entities.creatures.Player;
 import com.TG.gfx.Assets;
 import com.TG.launch.Game;
@@ -42,12 +43,12 @@ public class GameState extends State{
         player1.setyMove(0);
         player2.setxMove(0);
         player2.setyMove(0);
-        player1.getNear().setRaze(false);
-        player1.getMedium().setRaze(false);
-        player1.getFar().setRaze(false);
-        player2.getNear().setRaze(false);
-        player2.getMedium().setRaze(false);
-        player2.getFar().setRaze(false);
+        player1.setNear(null);
+        player1.setMedium(null);
+        player1.setFar(null);
+        player2.setNear(null);
+        player2.setMedium(null);
+        player2.setFar(null);
         if (game.getKeyManager().up) {
             player1.moveUp();
         }
@@ -73,23 +74,24 @@ public class GameState extends State{
             player2.moveRight();
         }
         if (game.getKeyManager().near) {
-            player1.getNear().setRaze(true);
+            player1.setNear(new Raze(player1.getNearX(),player1.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
         }
         if (game.getKeyManager().medium) {
-            player1.getMedium().setRaze(true);
+            player1.setNear(new Raze(player1.getMediumX(),player1.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
         }
         if (game.getKeyManager().far) {
-            player1.getFar().setRaze(true);
+            player1.setNear(new Raze(player1.getFarX(),player1.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
         }
         if (game.getKeyManager().near2) {
-            player2.getNear().setRaze(true);
+            player2.setNear(new Raze(player2.getNearX(),player2.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
         }
         if (game.getKeyManager().medium2) {
-            player2.getMedium().setRaze(true);
+            player2.setNear(new Raze(player2.getMediumX(),player2.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
         }
         if (game.getKeyManager().far2) {
-            player2.getFar().setRaze(true);
+            player2.setNear(new Raze(player2.getFarX(),player2.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
         }
+        
     }
     
     @Override
