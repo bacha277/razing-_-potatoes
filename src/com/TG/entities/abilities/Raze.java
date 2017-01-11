@@ -22,9 +22,20 @@ public class Raze extends Entity{
     public static final int DEFAULT_NEAR_RANGE=50;
     public static final int DEFAULT_MEDIUM_RANGE=100;
     public static final int DEFAULT_FAR_RANGE=200;
+    public static final int DEFAULT_LAST_TIME=15;
+    private int lastTime;
+
+    public int getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(int lastTime) {
+        this.lastTime = lastTime;
+    }
     
     public Raze(float x, float y, int width, int height) {
         super(x, y, width, height);
+        lastTime=DEFAULT_LAST_TIME;
     }
 
     @Override

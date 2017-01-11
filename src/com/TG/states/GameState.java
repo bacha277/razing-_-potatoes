@@ -43,12 +43,6 @@ public class GameState extends State{
         player1.setyMove(0);
         player2.setxMove(0);
         player2.setyMove(0);
-        player1.setNear(null);
-        player1.setMedium(null);
-        player1.setFar(null);
-        player2.setNear(null);
-        player2.setMedium(null);
-        player2.setFar(null);
         if (game.getKeyManager().up) {
             player1.moveUp();
         }
@@ -74,22 +68,40 @@ public class GameState extends State{
             player2.moveRight();
         }
         if (game.getKeyManager().near) {
-            player1.setNear(new Raze(player1.getNearX(),player1.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+            if (player1.getNearCD()==0) {
+                player1.setNear(new Raze(player1.getNearX(),player1.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+                player1.setNearCD(Player.DEFAULT_RAZE_COOLDOWN);
+            }
         }
         if (game.getKeyManager().medium) {
-            player1.setMedium(new Raze(player1.getMediumX(),player1.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+            if (player1.getMediumCD()==0) {
+                player1.setMedium(new Raze(player1.getMediumX(),player1.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+                player1.setMediumCD(Player.DEFAULT_RAZE_COOLDOWN);
+            }
         }
         if (game.getKeyManager().far) {
-            player1.setFar(new Raze(player1.getFarX(),player1.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+            if (player1.getFarCD() == 0) {
+                player1.setFar(new Raze(player1.getFarX(), player1.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+                player1.setFarCD(Player.DEFAULT_RAZE_COOLDOWN);
+            }
         }
         if (game.getKeyManager().near2) {
-            player2.setNear(new Raze(player2.getNearX(),player2.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+            if (player2.getNearCD()==0) {
+                player2.setNear(new Raze(player2.getNearX(),player2.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+                player2.setNearCD(Player.DEFAULT_RAZE_COOLDOWN);
+            }
         }
         if (game.getKeyManager().medium2) {
-            player2.setMedium(new Raze(player2.getMediumX(),player2.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+            if (player2.getMediumCD()==0) {
+                player2.setMedium(new Raze(player2.getMediumX(),player2.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+                player2.setMediumCD(Player.DEFAULT_RAZE_COOLDOWN);
+            }
         }
         if (game.getKeyManager().far2) {
-            player2.setFar(new Raze(player2.getFarX(),player2.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+            if (player2.getFarCD() == 0) {
+                player2.setFar(new Raze(player2.getFarX(), player2.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
+                player2.setFarCD(Player.DEFAULT_RAZE_COOLDOWN);
+            }
         }
         
     }

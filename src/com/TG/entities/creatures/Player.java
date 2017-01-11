@@ -23,6 +23,7 @@ public class Player extends Creature{
     public static final int DEFAULT_HEALTH_BAR_RELATIVE_Y=-10;
     public static final int DEFAULT_HEALTH_BAR_MAX_WIDTH=40;
     public static final int DEFAULT_HEALTH_BAR_HEIGHT=5;
+    public static final int DEFAULT_RAZE_COOLDOWN=100;
     public static final BufferedImage DEFAULT_PLAYER_IMAGE=Assets.sf;
     private Game game;
     private boolean directionUp,directionDown,directionLeft,directionRight;
@@ -30,7 +31,34 @@ public class Player extends Creature{
     private float xMove,yMove;
     private Raze near,medium,far;
     private float nearX,nearY,mediumX,mediumY,farX,farY;
+    private int nearCD,mediumCD,farCD;
 
+    public int getNearCD() {
+        return nearCD;
+    }
+
+    public void setNearCD(int nearCD) {
+        this.nearCD = nearCD;
+    }
+
+    public int getMediumCD() {
+        return mediumCD;
+    }
+
+    public void setMediumCD(int mediumCD) {
+        this.mediumCD = mediumCD;
+    }
+
+    public int getFarCD() {
+        return farCD;
+    }
+
+    public void setFarCD(int farCD) {
+        this.farCD = farCD;
+    }
+
+    
+    
     public float getNearX() {
         return nearX;
     }
@@ -167,10 +195,10 @@ public class Player extends Creature{
     public Player(Game game, float x, float y,Color color) {
         super(x, y,DEFAULT_PLAYER_WIDTH,DEFAULT_PLAYER_HEIGHT,color);
         this.game = game;
-        near=new Raze(x, y, Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT);
-        medium=new Raze(x, y, Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT);
-        far=new Raze(x, y, Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT);
         speed=DEFAULT_SPEED;
+        nearCD=0;
+        mediumCD=0;
+        farCD=0;
     }
     public void turnUp()
     {
@@ -279,9 +307,45 @@ public class Player extends Creature{
             far.render(g);
         }
     }
-
+    private void updateLastTime(Raze r)
+    {
+        
+    }
     @Override
     public void tick() {
+        if (nearCD>0) {
+            nearCD-=1;
+        } 
+        if (mediumCD>0) {
+            mediumCD-=1;
+        } 
+        if (farCD>0) {
+            farCD-=1;
+        }
+        if (near != null) {
+            if (near.getLastTime() > 0) {
+                near.setLastTime(near.getLastTime() - 1);
+            } else if (near.getLastTime() == 0) {
+                near = null;
+            }
+
+        }
+        if (medium != null) {
+            if (medium.getLastTime() > 0) {
+                medium.setLastTime(medium.getLastTime() - 1);
+            } else if (medium.getLastTime() == 0) {
+                medium = null;
+            }
+
+        }
+        if (far != null) {
+            if (far.getLastTime() > 0) {
+                far.setLastTime(far.getLastTime() - 1);
+            } else if (far.getLastTime() == 0) {
+                far = null;
+            }
+
+        }
         move();
         updateRazePosition();
     }
