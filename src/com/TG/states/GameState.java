@@ -71,36 +71,72 @@ public class GameState extends State{
             if (player1.getNearCD()==0) {
                 player1.setNear(new Raze(player1.getNearX(),player1.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player1.setNearCD(Player.DEFAULT_RAZE_COOLDOWN);
+                if (player1.getNearX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH
+                        &&player1.getNearX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
+                        &&player1.getNearY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT
+                        &&player1.getNearY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                    player2.setCurrentHealth(player2.getCurrentHealth()-1);
+                }
             }
         }
         if (game.getKeyManager().medium) {
             if (player1.getMediumCD()==0) {
                 player1.setMedium(new Raze(player1.getMediumX(),player1.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player1.setMediumCD(Player.DEFAULT_RAZE_COOLDOWN);
+                if (player1.getMediumX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH
+                        &&player1.getMediumX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
+                        &&player1.getMediumY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT
+                        &&player1.getMediumY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                    player2.setCurrentHealth(player2.getCurrentHealth()-1);
+                }
             }
         }
         if (game.getKeyManager().far) {
             if (player1.getFarCD() == 0) {
                 player1.setFar(new Raze(player1.getFarX(), player1.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player1.setFarCD(Player.DEFAULT_RAZE_COOLDOWN);
+                if (player1.getFarX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH
+                        &&player1.getFarX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
+                        &&player1.getFarY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT
+                        &&player1.getFarY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                    player2.setCurrentHealth(player2.getCurrentHealth()-1);
+                }
             }
         }
         if (game.getKeyManager().near2) {
             if (player2.getNearCD()==0) {
                 player2.setNear(new Raze(player2.getNearX(),player2.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player2.setNearCD(Player.DEFAULT_RAZE_COOLDOWN);
+                if (player2.getNearX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH
+                        &&player2.getNearX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
+                        &&player2.getNearY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT
+                        &&player2.getNearY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                    player1.setCurrentHealth(player1.getCurrentHealth()-1);
+                }
             }
         }
         if (game.getKeyManager().medium2) {
             if (player2.getMediumCD()==0) {
                 player2.setMedium(new Raze(player2.getMediumX(),player2.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player2.setMediumCD(Player.DEFAULT_RAZE_COOLDOWN);
+                if (player2.getMediumX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH
+                        &&player2.getMediumX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
+                        &&player2.getMediumY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT
+                        &&player2.getMediumY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                    player1.setCurrentHealth(player1.getCurrentHealth()-1);
+                }
             }
         }
         if (game.getKeyManager().far2) {
             if (player2.getFarCD() == 0) {
                 player2.setFar(new Raze(player2.getFarX(), player2.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player2.setFarCD(Player.DEFAULT_RAZE_COOLDOWN);
+                if (player2.getFarX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH
+                        &&player2.getFarX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
+                        &&player2.getFarY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT
+                        &&player2.getFarY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                    player1.setCurrentHealth(player1.getCurrentHealth()-1);
+                }
             }
         }
         
