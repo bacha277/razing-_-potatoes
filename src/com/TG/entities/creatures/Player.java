@@ -8,6 +8,7 @@ package com.TG.entities.creatures;
 import com.TG.entities.abilities.Raze;
 import com.TG.gfx.Assets;
 import com.TG.launch.Game;
+import com.TG.launch.Launcher;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -236,22 +237,30 @@ public class Player extends Creature{
     public void moveUp()
     {
         turnUp();
-        yMove=-speed;
+        if (y>=speed) {
+            yMove=-speed;
+        }      
     }
     public void moveDown()
     {
         turnDown();
-        yMove=speed;
+        if (y<=Launcher.DEFAULT_WINDOW_HEIGHT-Player.DEFAULT_PLAYER_HEIGHT) {
+            yMove=speed;
+        }    
     }
     public void moveLeft()
     {
         turnLeft();
-        xMove=-speed;
+        if (x>=speed) {
+           xMove=-speed; 
+        }    
     }
     public void moveRight()
     {
         turnRight();
-        xMove=speed;
+        if (x<=Launcher.DEFAULT_WINDOW_WIDTH-Player.DEFAULT_PLAYER_WIDTH) {
+            xMove=speed;
+        }   
     }
     private void updateRazePosition()
     {
