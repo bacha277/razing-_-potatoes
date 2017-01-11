@@ -256,35 +256,35 @@ public class Player extends Creature{
     private void updateRazePosition()
     {
         if (directionUp) {
-            nearX=x;
-            nearY=y-Raze.DEFAULT_NEAR_RANGE;
-            mediumX=x;
-            mediumY=y-Raze.DEFAULT_MEDIUM_RANGE;
-            farX=x;
-            farY=y-Raze.DEFAULT_FAR_RANGE;
+            nearX=x-15;
+            nearY=y-20-Raze.DEFAULT_NEAR_RANGE;
+            mediumX=x-15;
+            mediumY=y-20-Raze.DEFAULT_MEDIUM_RANGE;
+            farX=x-15;
+            farY=y-20-Raze.DEFAULT_FAR_RANGE;
         }
         else if (directionDown) {
-            nearX=x;
-            nearY=y+Raze.DEFAULT_NEAR_RANGE;
-            mediumX=x;
-            mediumY=y+Raze.DEFAULT_MEDIUM_RANGE;
-            farX=x;
-            farY=y+Raze.DEFAULT_FAR_RANGE;
+            nearX=x-15;
+            nearY=y+20+Raze.DEFAULT_NEAR_RANGE;
+            mediumX=x-15;
+            mediumY=y+20+Raze.DEFAULT_MEDIUM_RANGE;
+            farX=x-15;
+            farY=y+20+Raze.DEFAULT_FAR_RANGE;
         }
         else if (directionLeft) {
-            nearX=x-Raze.DEFAULT_NEAR_RANGE;
+            nearX=x-40-Raze.DEFAULT_NEAR_RANGE;
             nearY=y;
-            mediumX=x-Raze.DEFAULT_MEDIUM_RANGE;
+            mediumX=x-40-Raze.DEFAULT_MEDIUM_RANGE;
             mediumY=y;
-            farX=x-Raze.DEFAULT_FAR_RANGE;
+            farX=x-40-Raze.DEFAULT_FAR_RANGE;
             farY=y;
         }
         else if (directionRight) {
-            nearX=x+Raze.DEFAULT_NEAR_RANGE;
+            nearX=x+40+Raze.DEFAULT_NEAR_RANGE;
             nearY=y;
-            mediumX=x+Raze.DEFAULT_MEDIUM_RANGE;
+            mediumX=x+40+Raze.DEFAULT_MEDIUM_RANGE;
             mediumY=y;
-            farX=x+Raze.DEFAULT_FAR_RANGE;
+            farX=x+40+Raze.DEFAULT_FAR_RANGE;
             farY=y;
         }
     }
