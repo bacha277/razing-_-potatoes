@@ -14,9 +14,9 @@ import java.awt.Graphics;
  * @author BHT
  */
 public class EndState extends State{
-    public static Font font=new Font("TimesRoman", Font.PLAIN, 50);
-    public static int DEFAULT_ANNOUNCEMENT_X=120;
-    public static int DEFAULT_ANNOUNCEMENT_Y=50;
+    public static final Font font=new Font("TimesRoman", Font.PLAIN, 50);
+    public static final int DEFAULT_ANNOUNCEMENT_X=120;
+    public static final int DEFAULT_ANNOUNCEMENT_Y=50;
     private Game game;
     private int winner;
 

@@ -26,6 +26,7 @@ public class Player extends Creature{
     public static final int DEFAULT_HEALTH_BAR_HEIGHT=5;
     public static final int DEFAULT_RAZE_COOLDOWN=100;
     public static final BufferedImage DEFAULT_PLAYER_IMAGE=Assets.sf;
+    public static final BufferedImage RAZING_PLAYER_IMAGE=Assets.sf2;
     private Game game;
     private boolean directionUp,directionDown,directionLeft,directionRight;
     private float speed;
@@ -33,7 +34,25 @@ public class Player extends Creature{
     private Raze near,medium,far;
     private float nearX,nearY,mediumX,mediumY,farX,farY;
     private int nearCD,mediumCD,farCD;
+    private int razeLastingTime;
+    private BufferedImage img;
 
+    public int getRazeLastingTime() {
+        return razeLastingTime;
+    }
+
+    public void setRazeLastingTime(int razeLastingTime) {
+        this.razeLastingTime = razeLastingTime;
+    }
+
+    public BufferedImage getImg() {
+        return img;
+    }
+
+    public void setImg(BufferedImage img) {
+        this.img = img;
+    }
+    
     public int getNearCD() {
         return nearCD;
     }
@@ -200,6 +219,8 @@ public class Player extends Creature{
         nearCD=0;
         mediumCD=0;
         farCD=0;
+        razeLastingTime=0;
+        img=DEFAULT_PLAYER_IMAGE;
     }
     public void turnUp()
     {
@@ -304,7 +325,7 @@ public class Player extends Creature{
     }
     @Override
     public void render(Graphics g) {
-        g.drawImage(DEFAULT_PLAYER_IMAGE, (int)x, (int)y,width,height, null);
+        g.drawImage(img, (int)x, (int)y,width,height, null);
         drawHealthBar(g);
         if (near!=null) {
             near.render(g);
@@ -322,6 +343,12 @@ public class Player extends Creature{
     }
     @Override
     public void tick() {
+        if (razeLastingTime>0) {
+            razeLastingTime-=1;
+        }
+        else if (razeLastingTime==0) {
+            img=DEFAULT_PLAYER_IMAGE;
+        }
         if (nearCD>0) {
             nearCD-=1;
         } 

@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  * @author BHT
  */
 public class Assets {
-    public static BufferedImage dirt,fire,grass,stone,water,sf;
+    public static BufferedImage dirt,fire,grass,stone,water,sf,sf2;
 //    private static final int width=32,height=32;
     public static void init()
     {
@@ -27,5 +27,6 @@ public class Assets {
         stone=groundsheet.crop(396, 198, 32, 34);
         water=waterSheet.crop(484, 189, 22, 22);
         sf=fiendSheet.crop(20,27,48,52);
+        sf2=fiendSheet.crop(380,27,48,52);
     }
 }
