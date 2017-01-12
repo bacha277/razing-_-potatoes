@@ -9,6 +9,9 @@ import com.TG.entities.abilities.Raze;
 import com.TG.gfx.Assets;
 import com.TG.launch.Game;
 import com.TG.launch.Launcher;
+import com.TG.states.GameState;
+import com.TG.states.State;
+import com.TG.tiles.Tile;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -19,8 +22,9 @@ import java.awt.image.BufferedImage;
  */
 public class Player extends Creature{
     public static final float DEFAULT_SPEED=1;
-    public static final int DEFAULT_PLAYER_WIDTH=48;
+    public static final int DEFAULT_PLAYER_WIDTH=40;
     public static final int DEFAULT_PLAYER_HEIGHT=52;
+    public static final int DEFAULT_HEALTH_BAR_RELATIVE_X=-4;
     public static final int DEFAULT_HEALTH_BAR_RELATIVE_Y=-10;
     public static final int DEFAULT_HEALTH_BAR_MAX_WIDTH=40;
     public static final int DEFAULT_HEALTH_BAR_HEIGHT=5;
@@ -221,6 +225,10 @@ public class Player extends Creature{
         farCD=0;
         razeLastingTime=0;
         img=DEFAULT_PLAYER_IMAGE;
+        bounds.x=0;
+        bounds.y=0;
+        bounds.width=DEFAULT_PLAYER_WIDTH;
+        bounds.height=DEFAULT_PLAYER_HEIGHT;
     }
     public void turnUp()
     {
@@ -252,8 +260,45 @@ public class Player extends Creature{
     }
     public void move()
     {
-        x+=xMove;
-        y+=yMove;
+        moveX();
+        moveY();
+    }
+    public void moveX()
+    {
+        if (xMove>0) {
+            int tx=(int)(x+xMove+bounds.x+bounds.width)/Tile.TILEWIDTH;
+            if (!collisionWithTile(tx,(int)(y+bounds.y)/Tile.TILEHEIGHT) && !collisionWithTile(tx,(int)(y+bounds.y+bounds.height)/Tile.TILEHEIGHT))
+            {
+                x+=xMove;
+            }
+        }
+        else if (xMove<0) {
+            int tx=(int)(x+xMove+bounds.x)/Tile.TILEWIDTH;
+            if (!collisionWithTile(tx,(int)(y+bounds.y)/Tile.TILEHEIGHT) && !collisionWithTile(tx,(int)(y+bounds.y+bounds.height)/Tile.TILEHEIGHT))
+            {
+                x+=xMove;
+            }
+        }
+    }
+    public void moveY()
+    {
+        if (yMove<0) {
+            int ty=(int)(y+yMove+bounds.y)/Tile.TILEHEIGHT;
+            if (!collisionWithTile((int)(x+bounds.x)/Tile.TILEWIDTH, ty)&&!collisionWithTile((int)(x+bounds.x+bounds.width)/Tile.TILEWIDTH, ty)) {
+                y+=yMove;
+            }
+        }
+        else if (yMove>0) {
+            int ty=(int)(y+yMove+bounds.y+bounds.height)/Tile.TILEHEIGHT;
+            if (!collisionWithTile((int)(x+bounds.x)/Tile.TILEWIDTH, ty)&&!collisionWithTile((int)(x+bounds.x+bounds.width)/Tile.TILEWIDTH, ty)) {
+                y+=yMove;
+            }
+        }
+    }
+    protected boolean collisionWithTile(int x,int y)
+    {
+        GameState gameState = (GameState) game.getGameState();
+        return gameState.getWorld().getTile(x, y).isSolid();
     }
     public void moveUp()
     {
@@ -321,7 +366,7 @@ public class Player extends Creature{
     private void drawHealthBar(Graphics g)
     {
         g.setColor(color);
-        g.fillRect((int)x, (int)y+DEFAULT_HEALTH_BAR_RELATIVE_Y, (int)((float)currentHealth/health*DEFAULT_HEALTH_BAR_MAX_WIDTH), DEFAULT_HEALTH_BAR_HEIGHT);
+        g.fillRect((int)x+DEFAULT_HEALTH_BAR_RELATIVE_X, (int)y+DEFAULT_HEALTH_BAR_RELATIVE_Y, (int)((float)currentHealth/health*DEFAULT_HEALTH_BAR_MAX_WIDTH), DEFAULT_HEALTH_BAR_HEIGHT);
     }
     @Override
     public void render(Graphics g) {
