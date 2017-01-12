@@ -26,7 +26,7 @@ public class Assets {
         fire=fireSheet.crop(251, 99, 22, 35);
         grass=groundsheet.crop(726, 330, 32, 34);
         stone=groundsheet.crop(396, 198, 32, 34);
-        water=waterSheet.crop(484, 189, 22, 22);
+        water=waterSheet.crop(285, 80, 20, 20);
         sf=fiendSheet.crop(20,27,48,52);
         sf2=fiendSheet.crop(380,27,48,52);
         cooldown=iconSheet.crop(189,38,25,18); 
