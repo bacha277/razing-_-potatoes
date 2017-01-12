@@ -23,12 +23,12 @@ import java.awt.image.BufferedImage;
 public class Player extends Creature{
     public static final float DEFAULT_SPEED=1;
     public static final int DEFAULT_PLAYER_WIDTH=40;
-    public static final int DEFAULT_PLAYER_HEIGHT=52;
+    public static final int DEFAULT_PLAYER_HEIGHT=40;
     public static final int DEFAULT_HEALTH_BAR_RELATIVE_X=-4;
     public static final int DEFAULT_HEALTH_BAR_RELATIVE_Y=-10;
     public static final int DEFAULT_HEALTH_BAR_MAX_WIDTH=40;
     public static final int DEFAULT_HEALTH_BAR_HEIGHT=5;
-    public static final int DEFAULT_RAZE_COOLDOWN=100;
+    public static final int DEFAULT_RAZE_COOLDOWN=200;
     public static final BufferedImage DEFAULT_PLAYER_IMAGE=Assets.sf;
     public static final BufferedImage RAZING_PLAYER_IMAGE=Assets.sf2;
     private Game game;
@@ -371,6 +371,8 @@ public class Player extends Creature{
     @Override
     public void render(Graphics g) {
         g.drawImage(img, (int)x, (int)y,width,height, null);
+        g.setColor(Color.red);
+//        g.fillRect((int)x, (int)y, width, height);
         drawHealthBar(g);
         if (near!=null) {
             near.render(g);

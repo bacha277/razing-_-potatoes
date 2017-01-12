@@ -25,6 +25,12 @@ public class GameState extends State{
     public static final float PLAYER_2_START_X=220;
     public static final float PLAYER_1_START_Y=10;
     public static final float PLAYER_2_START_Y=590;
+    public static final float PLAYER_1_ABILITIES_X=0;
+    public static final float PLAYER_1_ABILITIES_Y=155;
+    public static final float PLAYER_2_ABILITIES_X=320;
+    public static final float PLAYER_2_ABILITIES_Y=440;
+    public static final int DEFAULT_ABILITY_WIDTH=40;
+    public static final int DEFAULT_ABILITY_HEIGHT=40;
     private Player player1,player2;
     private World world;
     private Game game;
@@ -177,8 +183,48 @@ public class GameState extends State{
         world.render(g);
         player1.render(g);
         player2.render(g);      
+        coolDownRender(g, player1, player2);
     }
-
+    public void coolDownRender(Graphics g,Player player1,Player player2)
+    {
+        if (player1.getNearCD()>0) {
+            g.drawImage(Assets.cooldown, (int)PLAYER_1_ABILITIES_X, (int)PLAYER_1_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        else if (player1.getNearCD()==0) {
+            g.drawImage(Assets.ability, (int)PLAYER_1_ABILITIES_X, (int)PLAYER_1_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        if (player1.getMediumCD()>0) {
+            g.drawImage(Assets.cooldown, (int)PLAYER_1_ABILITIES_X+DEFAULT_ABILITY_WIDTH+20, (int)PLAYER_1_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        else if (player1.getMediumCD()==0) {
+            g.drawImage(Assets.ability, (int)PLAYER_1_ABILITIES_X+DEFAULT_ABILITY_WIDTH+20, (int)PLAYER_1_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        if (player1.getFarCD()>0) {
+            g.drawImage(Assets.cooldown, (int)PLAYER_1_ABILITIES_X+DEFAULT_ABILITY_WIDTH*2+20*2, (int)PLAYER_1_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        else if (player1.getFarCD()==0) {
+            g.drawImage(Assets.ability, (int)PLAYER_1_ABILITIES_X+DEFAULT_ABILITY_WIDTH*2+20*2, (int)PLAYER_1_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        
+        if (player2.getNearCD()>0) {
+            g.drawImage(Assets.cooldown, (int)PLAYER_2_ABILITIES_X, (int)PLAYER_2_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        else if (player2.getNearCD()==0) {
+            g.drawImage(Assets.ability, (int)PLAYER_2_ABILITIES_X, (int)PLAYER_2_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        if (player2.getMediumCD()>0) {
+            g.drawImage(Assets.cooldown, (int)PLAYER_2_ABILITIES_X+DEFAULT_ABILITY_WIDTH+20, (int)PLAYER_2_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        else if (player2.getMediumCD()==0) {
+            g.drawImage(Assets.ability, (int)PLAYER_2_ABILITIES_X+DEFAULT_ABILITY_WIDTH+20, (int)PLAYER_2_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        if (player2.getFarCD()>0) {
+            g.drawImage(Assets.cooldown, (int)PLAYER_2_ABILITIES_X+DEFAULT_ABILITY_WIDTH*2+20*2, (int)PLAYER_2_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+        else if (player2.getFarCD()==0) {
+            g.drawImage(Assets.ability, (int)PLAYER_2_ABILITIES_X+DEFAULT_ABILITY_WIDTH*2+20*2, (int)PLAYER_2_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
+        }
+    }
     public World getWorld() {
         return world;
     }

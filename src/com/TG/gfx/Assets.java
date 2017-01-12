@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  * @author BHT
  */
 public class Assets {
-    public static BufferedImage dirt,fire,grass,stone,water,sf,sf2;
+    public static BufferedImage dirt,fire,grass,stone,water,sf,sf2,ability,cooldown;
 //    private static final int width=32,height=32;
     public static void init()
     {
@@ -20,6 +20,7 @@ public class Assets {
         SpriteSheet fiendSheet=new SpriteSheet(ImageLoader.loadImage("/textures/fiendSheet.png"));
         SpriteSheet fireSheet=new SpriteSheet(ImageLoader.loadImage("/textures/fireSheet.png"));
         SpriteSheet waterSheet=new SpriteSheet(ImageLoader.loadImage("/textures/waterSheet.png"));
+        SpriteSheet iconSheet=new SpriteSheet(ImageLoader.loadImage("/textures/iconSheet.png"));
         
         dirt=groundsheet.crop(33, 264, 32, 34);
         fire=fireSheet.crop(251, 99, 22, 35);
@@ -28,5 +29,7 @@ public class Assets {
         water=waterSheet.crop(484, 189, 22, 22);
         sf=fiendSheet.crop(20,27,48,52);
         sf2=fiendSheet.crop(380,27,48,52);
+        cooldown=iconSheet.crop(189,38,25,18); 
+        ability=iconSheet.crop(84,95,25,18); 
     }
 }
