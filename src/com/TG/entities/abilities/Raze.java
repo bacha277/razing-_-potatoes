@@ -21,7 +21,7 @@ public class Raze extends Entity{
     public static final int DEFAULT_RAZE_HEIGHT=60;
     public static final int DEFAULT_NEAR_RANGE=50;
     public static final int DEFAULT_MEDIUM_RANGE=100;
-    public static final int DEFAULT_FAR_RANGE=200;
+    public static final int DEFAULT_FAR_RANGE=150;
     public static final int DEFAULT_LAST_TIME=30;
     private int lastTime;
 
