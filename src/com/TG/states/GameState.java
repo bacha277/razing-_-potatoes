@@ -35,7 +35,7 @@ public class GameState extends State{
         player2=new Player(game, PLAYER_2_START_X, PLAYER_2_START_Y,PLAYER_2_COLOR);
         player2.setDirectionUp(true);
         this.game=game;
-        world=new World("res/worlds/world1.txt");
+        world=new World("res/worlds/world2.txt");
     }
     private void getInput(Game game)
     {
