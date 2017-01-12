@@ -148,6 +148,16 @@ public class GameState extends State{
         getInput(game);
         player1.tick();
         player2.tick();
+        if (player1.getCurrentHealth()<1) {
+            EndState endState = (EndState) this.game.getEndState();
+            endState.setWinner(2);
+            State.setState(endState);
+        }
+        else if (player2.getCurrentHealth()<1) {
+            EndState endState = (EndState) this.game.getEndState();
+            endState.setWinner(1);
+            State.setState(endState);
+        }
     }
 
     @Override

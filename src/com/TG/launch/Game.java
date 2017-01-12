@@ -8,6 +8,8 @@ package com.TG.launch;
 import com.TG.display.Display;
 import com.TG.gfx.Assets;
 import com.TG.input.KeyManager;
+import com.TG.input.MouseManager;
+import com.TG.states.EndState;
 import com.TG.states.GameState;
 import com.TG.states.State;
 import java.awt.Graphics;
@@ -32,14 +34,17 @@ public class Game implements Runnable{
     private Graphics g;
     
     private KeyManager keyManager;
+    private MouseManager mouseManager;
 //    states
     private State gameState;
+    private State endState;
     
     public Game(String title,int width,int height) {
         this.title=title;
         this.width=width;
         this.height=height;
         keyManager=new KeyManager();
+        mouseManager=new MouseManager();
     }
    
     private void tick()
@@ -128,13 +133,38 @@ public class Game implements Runnable{
     private void init() {
         display=new Display(title, height, width);
         display.getFrame().addKeyListener(keyManager);
+        display.getFrame().addMouseListener(mouseManager);
+        display.getFrame().addMouseMotionListener(mouseManager);
+        display.getCanvas().addMouseListener(mouseManager);
+        display.getCanvas().addMouseMotionListener(mouseManager);
         Assets.init();
         gameState=new GameState(this);
+        endState=new EndState(this);
         State.setState(gameState);
     }
 
     public KeyManager getKeyManager() {
         return keyManager;
+    }
+
+    public MouseManager getMouseManager() {
+        return mouseManager;
+    }
+
+    public State getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(State gameState) {
+        this.gameState = gameState;
+    }
+
+    public State getEndState() {
+        return endState;
+    }
+
+    public void setEndState(State endState) {
+        this.endState = endState;
     }
     
 }
