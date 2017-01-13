@@ -79,10 +79,10 @@ public class GameState extends State{
                 player1.setRazeLastingTime(Raze.DEFAULT_LAST_TIME);
                 player1.setNear(new Raze(player1.getNearX(),player1.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player1.setNearCD(Player.DEFAULT_RAZE_COOLDOWN);
-                if (player1.getNearX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH
-                        &&player1.getNearX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
-                        &&player1.getNearY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT
-                        &&player1.getNearY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                if (player1.getNearX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player1.getNearX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player1.getNearY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT/2
+                        &&player1.getNearY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT/2) {
                     player2.setCurrentHealth(player2.getCurrentHealth()-1);
                 }
             }
@@ -93,10 +93,10 @@ public class GameState extends State{
                 player1.setRazeLastingTime(Raze.DEFAULT_LAST_TIME);
                 player1.setMedium(new Raze(player1.getMediumX(),player1.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player1.setMediumCD(Player.DEFAULT_RAZE_COOLDOWN);
-                if (player1.getMediumX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH
-                        &&player1.getMediumX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
-                        &&player1.getMediumY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT
-                        &&player1.getMediumY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                if (player1.getMediumX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player1.getMediumX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player1.getMediumY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT/2
+                        &&player1.getMediumY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT/2) {
                     player2.setCurrentHealth(player2.getCurrentHealth()-1);
                 }
             }
@@ -107,10 +107,10 @@ public class GameState extends State{
                 player1.setRazeLastingTime(Raze.DEFAULT_LAST_TIME);
                 player1.setFar(new Raze(player1.getFarX(), player1.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player1.setFarCD(Player.DEFAULT_RAZE_COOLDOWN);
-                if (player1.getFarX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH
-                        &&player1.getFarX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
-                        &&player1.getFarY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT
-                        &&player1.getFarY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                if (player1.getFarX()>player2.getX()-Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player1.getFarX()<player2.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player1.getFarY()>player2.getY()-Raze.DEFAULT_RAZE_HEIGHT/2
+                        &&player1.getFarY()<player2.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT/2) {
                     player2.setCurrentHealth(player2.getCurrentHealth()-1);
                 }
             }
@@ -121,10 +121,10 @@ public class GameState extends State{
                 player2.setRazeLastingTime(Raze.DEFAULT_LAST_TIME);
                 player2.setNear(new Raze(player2.getNearX(),player2.getNearY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player2.setNearCD(Player.DEFAULT_RAZE_COOLDOWN);
-                if (player2.getNearX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH
-                        &&player2.getNearX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
-                        &&player2.getNearY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT
-                        &&player2.getNearY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                if (player2.getNearX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player2.getNearX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player2.getNearY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT/2
+                        &&player2.getNearY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT/2) {
                     player1.setCurrentHealth(player1.getCurrentHealth()-1);
                 }
             }
@@ -135,10 +135,10 @@ public class GameState extends State{
                 player2.setRazeLastingTime(Raze.DEFAULT_LAST_TIME);
                 player2.setMedium(new Raze(player2.getMediumX(),player2.getMediumY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player2.setMediumCD(Player.DEFAULT_RAZE_COOLDOWN);
-                if (player2.getMediumX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH
-                        &&player2.getMediumX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
-                        &&player2.getMediumY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT
-                        &&player2.getMediumY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                if (player2.getMediumX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player2.getMediumX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player2.getMediumY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT/2
+                        &&player2.getMediumY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT/2) {
                     player1.setCurrentHealth(player1.getCurrentHealth()-1);
                 }
             }
@@ -149,10 +149,10 @@ public class GameState extends State{
                 player2.setRazeLastingTime(Raze.DEFAULT_LAST_TIME);
                 player2.setFar(new Raze(player2.getFarX(), player2.getFarY(), Raze.DEFAULT_RAZE_WIDTH, Raze.DEFAULT_RAZE_HEIGHT));
                 player2.setFarCD(Player.DEFAULT_RAZE_COOLDOWN);
-                if (player2.getFarX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH
-                        &&player2.getFarX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH
-                        &&player2.getFarY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT
-                        &&player2.getFarY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT) {
+                if (player2.getFarX()>player1.getX()-Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player2.getFarX()<player1.getX()+Player.DEFAULT_PLAYER_WIDTH+Raze.DEFAULT_RAZE_WIDTH/2
+                        &&player2.getFarY()>player1.getY()-Raze.DEFAULT_RAZE_HEIGHT/2
+                        &&player2.getFarY()<player1.getY()+Player.DEFAULT_PLAYER_HEIGHT+Raze.DEFAULT_RAZE_HEIGHT/2) {
                     player1.setCurrentHealth(player1.getCurrentHealth()-1);
                 }
             }
