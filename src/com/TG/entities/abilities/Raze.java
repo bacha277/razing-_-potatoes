@@ -19,9 +19,9 @@ public class Raze extends Entity{
     public static final BufferedImage DEFAULT_RAZE_IMAGE=Assets.fire;
     public static final int DEFAULT_RAZE_WIDTH=40;
     public static final int DEFAULT_RAZE_HEIGHT=40;
-    public static final int DEFAULT_NEAR_RANGE=50;
+    public static final int DEFAULT_NEAR_RANGE=25;
     public static final int DEFAULT_MEDIUM_RANGE=100;
-    public static final int DEFAULT_FAR_RANGE=150;
+    public static final int DEFAULT_FAR_RANGE=175;
     public static final int DEFAULT_LAST_TIME=30;
     private int lastTime;
 
