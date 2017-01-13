@@ -40,7 +40,7 @@ public class Player extends Creature{
     private int nearCD,mediumCD,farCD;
     private int razeLastingTime;
     private BufferedImage img;
-
+    private float centerX,centerY;
     public int getRazeLastingTime() {
         return razeLastingTime;
     }
@@ -328,39 +328,45 @@ public class Player extends Creature{
             xMove=speed;
         }   
     }
+    private void updateCenter()
+    {
+        centerX=x+DEFAULT_PLAYER_WIDTH/2;
+        centerY=y+DEFAULT_PLAYER_HEIGHT/2;
+    }
     private void updateRazePosition()
     {
+        updateCenter();
         if (directionUp) {
-            nearX=x-15;
-            nearY=y-20-Raze.DEFAULT_NEAR_RANGE;
-            mediumX=x-15;
-            mediumY=y-20-Raze.DEFAULT_MEDIUM_RANGE;
-            farX=x-15;
-            farY=y-20-Raze.DEFAULT_FAR_RANGE;
+            nearX=centerX;
+            nearY=centerY-Raze.DEFAULT_NEAR_RANGE;
+            mediumX=centerX;
+            mediumY=centerY-Raze.DEFAULT_MEDIUM_RANGE;
+            farX=centerX;
+            farY=centerY-Raze.DEFAULT_FAR_RANGE;
         }
         else if (directionDown) {
-            nearX=x-15;
-            nearY=y+20+Raze.DEFAULT_NEAR_RANGE;
-            mediumX=x-15;
-            mediumY=y+20+Raze.DEFAULT_MEDIUM_RANGE;
-            farX=x-15;
-            farY=y+20+Raze.DEFAULT_FAR_RANGE;
+            nearX=centerX;
+            nearY=centerY+Raze.DEFAULT_NEAR_RANGE;
+            mediumX=centerX;
+            mediumY=centerY+Raze.DEFAULT_MEDIUM_RANGE;
+            farX=centerX;
+            farY=centerY+Raze.DEFAULT_FAR_RANGE;
         }
         else if (directionLeft) {
-            nearX=x-40-Raze.DEFAULT_NEAR_RANGE;
-            nearY=y;
-            mediumX=x-40-Raze.DEFAULT_MEDIUM_RANGE;
-            mediumY=y;
-            farX=x-40-Raze.DEFAULT_FAR_RANGE;
-            farY=y;
+            nearX=centerX-Raze.DEFAULT_NEAR_RANGE;
+            nearY=centerY;
+            mediumX=centerX-Raze.DEFAULT_MEDIUM_RANGE;
+            mediumY=centerY;
+            farX=centerX-Raze.DEFAULT_FAR_RANGE;
+            farY=centerY;
         }
         else if (directionRight) {
-            nearX=x+40+Raze.DEFAULT_NEAR_RANGE;
-            nearY=y;
-            mediumX=x+40+Raze.DEFAULT_MEDIUM_RANGE;
-            mediumY=y;
-            farX=x+40+Raze.DEFAULT_FAR_RANGE;
-            farY=y;
+            nearX=centerX+Raze.DEFAULT_NEAR_RANGE;
+            nearY=centerY;
+            mediumX=centerX+Raze.DEFAULT_MEDIUM_RANGE;
+            mediumY=centerY;
+            farX=centerX+Raze.DEFAULT_FAR_RANGE;
+            farY=centerY;
         }
     }
     private void drawHealthBar(Graphics g)
@@ -371,8 +377,6 @@ public class Player extends Creature{
     @Override
     public void render(Graphics g) {
         g.drawImage(img, (int)x, (int)y,width,height, null);
-        g.setColor(Color.red);
-//        g.fillRect((int)x, (int)y, width, height);
         drawHealthBar(g);
         if (near!=null) {
             near.render(g);

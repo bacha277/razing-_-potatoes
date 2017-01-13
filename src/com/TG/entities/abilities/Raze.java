@@ -17,8 +17,8 @@ import java.awt.image.BufferedImage;
  */
 public class Raze extends Entity{
     public static final BufferedImage DEFAULT_RAZE_IMAGE=Assets.fire;
-    public static final int DEFAULT_RAZE_WIDTH=60;
-    public static final int DEFAULT_RAZE_HEIGHT=60;
+    public static final int DEFAULT_RAZE_WIDTH=40;
+    public static final int DEFAULT_RAZE_HEIGHT=40;
     public static final int DEFAULT_NEAR_RANGE=50;
     public static final int DEFAULT_MEDIUM_RANGE=100;
     public static final int DEFAULT_FAR_RANGE=150;
@@ -44,7 +44,7 @@ public class Raze extends Entity{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(DEFAULT_RAZE_IMAGE, (int) x, (int) y, DEFAULT_RAZE_WIDTH, DEFAULT_RAZE_HEIGHT, null);
+        g.drawImage(DEFAULT_RAZE_IMAGE, (int) x-DEFAULT_RAZE_WIDTH/2, (int) y-DEFAULT_RAZE_HEIGHT/2, DEFAULT_RAZE_WIDTH, DEFAULT_RAZE_HEIGHT, null);
     }
 
    
