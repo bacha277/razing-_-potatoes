@@ -14,9 +14,12 @@ import java.awt.Graphics;
  * @author BHT
  */
 public class EndState extends State{
-    public static final Font font=new Font("TimesRoman", Font.PLAIN, 50);
-    public static final int DEFAULT_ANNOUNCEMENT_X=120;
+    public static final Font font=new Font("TimesRoman", Font.PLAIN, 40);
+    public static final int DEFAULT_ANNOUNCEMENT_X=140;
     public static final int DEFAULT_ANNOUNCEMENT_Y=50;
+    public static final int DEFAULT_REMATCH_X=50;
+    public static final int DEFAULT_REMATCH_Y=200;
+    
     private Game game;
     private int winner;
 
@@ -35,7 +38,7 @@ public class EndState extends State{
 
     @Override
     public void tick() {
-        
+        getInput();
     }
 
     @Override
@@ -47,6 +50,12 @@ public class EndState extends State{
         else if (winner==1) {
             g.drawString("Blue wins !", DEFAULT_ANNOUNCEMENT_X, DEFAULT_ANNOUNCEMENT_Y);
         }
+        g.drawString("Press Enter to rematch.", DEFAULT_REMATCH_X, DEFAULT_REMATCH_Y);
     }
-    
+    private void getInput()
+    {
+        if (game.getKeyManager().enter) {
+            State.setState(new GameState(game));
+        }
+    }
 }
