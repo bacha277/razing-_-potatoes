@@ -22,7 +22,24 @@ public class EndState extends State{
     
     private Game game;
     private int winner;
+    private int score1,score2;
 
+    public int getScore1() {
+        return score1;
+    }
+
+    public void setScore1(int score1) {
+        this.score1 = score1;
+    }
+
+    public int getScore2() {
+        return score2;
+    }
+
+    public void setScore2(int score2) {
+        this.score2 = score2;
+    }
+    
     public int getWinner() {
         return winner;
     }
@@ -34,6 +51,8 @@ public class EndState extends State{
     public EndState(Game game) {
         super(game);
         this.game=game;
+        score1=0;
+        score2=0;
     }
 
     @Override

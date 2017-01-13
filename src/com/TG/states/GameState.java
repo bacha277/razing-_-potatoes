@@ -31,6 +31,10 @@ public class GameState extends State{
     public static final float PLAYER_2_ABILITIES_Y=440;
     public static final int DEFAULT_ABILITY_WIDTH=40;
     public static final int DEFAULT_ABILITY_HEIGHT=40;
+    public static final float PLAYER_1_SCORE_X=390;
+    public static final float PLAYER_1_SCORE_Y=190;
+    public static final float PLAYER_2_SCORE_X=70;
+    public static final float PLAYER_2_SCORE_Y=475;
     private Player player1,player2;
     private World world;
     private Game game;
@@ -169,11 +173,13 @@ public class GameState extends State{
         if (player1.getCurrentHealth()<1) {
             EndState endState = (EndState) this.game.getEndState();
             endState.setWinner(2);
+            endState.setScore2(endState.getScore2()+1);
             State.setState(endState);
         }
         else if (player2.getCurrentHealth()<1) {
             EndState endState = (EndState) this.game.getEndState();
             endState.setWinner(1);
+            endState.setScore1(endState.getScore1()+1);
             State.setState(endState);
         }
     }
@@ -224,6 +230,10 @@ public class GameState extends State{
         else if (player2.getFarCD()==0) {
             g.drawImage(Assets.ability, (int)PLAYER_2_ABILITIES_X+DEFAULT_ABILITY_WIDTH*2+20*2, (int)PLAYER_2_ABILITIES_Y,DEFAULT_ABILITY_WIDTH,DEFAULT_ABILITY_HEIGHT, null);
         }
+        EndState endState = (EndState) this.game.getEndState();
+        g.setFont(EndState.font);
+        g.drawString(endState.getScore1()+"", (int)PLAYER_1_SCORE_X, (int)PLAYER_1_SCORE_Y);
+        g.drawString(endState.getScore2()+"", (int)PLAYER_2_SCORE_X, (int)PLAYER_2_SCORE_Y);
     }
     public World getWorld() {
         return world;
