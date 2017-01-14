@@ -232,7 +232,9 @@ public class GameState extends State{
         }
         EndState endState = (EndState) this.game.getEndState();
         g.setFont(EndState.font);
+        g.setColor(Color.blue);
         g.drawString(endState.getScore1()+"", (int)PLAYER_1_SCORE_X, (int)PLAYER_1_SCORE_Y);
+        g.setColor(Color.red);
         g.drawString(endState.getScore2()+"", (int)PLAYER_2_SCORE_X, (int)PLAYER_2_SCORE_Y);
     }
     public World getWorld() {

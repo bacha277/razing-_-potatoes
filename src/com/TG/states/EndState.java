@@ -6,6 +6,7 @@
 package com.TG.states;
 
 import com.TG.launch.Game;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -64,11 +65,14 @@ public class EndState extends State{
     public void render(Graphics g) {
         g.setFont(font);
         if (winner==2) {
+            g.setColor(Color.red);
             g.drawString("Red wins !", DEFAULT_ANNOUNCEMENT_X, DEFAULT_ANNOUNCEMENT_Y);
         }
         else if (winner==1) {
+            g.setColor(Color.blue);
             g.drawString("Blue wins !", DEFAULT_ANNOUNCEMENT_X, DEFAULT_ANNOUNCEMENT_Y);
         }
+        g.setColor(Color.black);
         g.drawString("Press Enter to rematch.", DEFAULT_REMATCH_X, DEFAULT_REMATCH_Y);
     }
     private void getInput()
